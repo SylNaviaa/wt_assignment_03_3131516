@@ -3,19 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - My Blog</title>
+  <title>Login - Superhero Movies Blog</title>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="styles.css">
-  <script src="/header.js" defer></script>
+  <!-- Custom Font - Roboto -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Custom modern styles */
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    header {
+      background-color: #ec1d24;
+      padding: 15px 0;
+    }
+    .navbar-brand, .nav-link {
+      color: #fff !important;
+      font-weight: bold;
+    }
+    .login-form {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin: 50px auto;
+      max-width: 400px;
+    }
+    .login-form h2 {
+      margin-bottom: 20px;
+      color: #333;
+      text-align: center;
+    }
+    .login-form label {
+      font-weight: bold;
+    }
+    .login-form input[type="text"],
+    .login-form input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    .login-form button[type="submit"] {
+      background-color: #ec1d24;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 20px;
+      cursor: pointer;
+      width: 100%;
+    }
+    .login-form button[type="submit"]:hover {
+      background-color: #d51b20;
+    }
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+    }
+  </style>
 </head>
-
 <body>  
   <header>
-    <% if (loggedIn) { %>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">My Blog</a>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <% if (loggedIn) { %>
+        <a class="navbar-brand" href="/">Superhero Movies Blog</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -25,7 +84,7 @@
               <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/article">Article</a>
+              <a class="nav-link" href="/article">Articles</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/dashboard">Dashboard</a>
@@ -35,10 +94,8 @@
             </li>
           </ul>
         </div>
-      </nav>
-    <% } else { %>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">My Blog</a>
+      <% } else { %>
+        <a class="navbar-brand" href="/">Superhero Movies Blog</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -48,7 +105,7 @@
               <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/article">Article</a>
+              <a class="nav-link" href="/article">Articles</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/login">Login</a>
@@ -58,8 +115,8 @@
             </li>
           </ul>
         </div>
-      </nav>
-    <% } %>
+      <% } %>
+    </nav>
   </header>
 
   <main>
@@ -77,12 +134,12 @@
   </main>
   
   <footer>
-    <p>&copy; 2024 My Blog. All rights reserved.</p>
+    <p>&copy; 2024 Superhero Movies Blog. All rights reserved.</p>
   </footer>
+
   <!-- Bootstrap JS and jQuery (required for Bootstrap) -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="header.js"></script>
 </body>
 </html>

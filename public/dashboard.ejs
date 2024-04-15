@@ -8,13 +8,44 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="styles.css">
-  <script src="/header.js" defer></script>
+  <style>
+    /* Custom modern styles */
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    header {
+      background-color: #ec1d24;
+      padding: 15px 0;
+    }
+    .navbar-brand, .nav-link {
+      color: #fff !important;
+      font-weight: bold;
+    }
+    .navbar-toggler-icon {
+      background-color: #fff;
+    }
+    main {
+      margin-top: 50px;
+    }
+    form {
+      margin-top: 20px;
+    }
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+      margin-top: 50px;
+    }
+  </style>
 </head>
 
-<body>  
+<body>
   <header>
-    <% if (loggedIn) { %>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <% if (loggedIn) { %>
         <a class="navbar-brand" href="/">My Blog</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -22,7 +53,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="/">Home</a>
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/article">Article</a>
@@ -35,42 +66,39 @@
             </li>
           </ul>
         </div>
-      </nav>
-    <% } else { %>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">My Blog</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/article">Article</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/login">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/register">Register</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    <% } %>
+      <% } else { %>
+        <span class="navbar-brand mb-0 h1">My Blog</span>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/article">Article</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/register">Register</a>
+          </li>
+        </ul>
+      <% } %>
+    </nav>
   </header>
 
-  <main>
+  <main class="container">
     <% if (user) { %>
       <h2>Welcome, <%= user.username %>!</h2>
       <form action="/article/create" method="POST">
-        <label for="title">Title:</label><br>
-        <input type="text" id="title" name="title"><br>
-        <label for="body">Body:</label><br>
-        <textarea id="body" name="body"></textarea><br>
-        <button type="submit">Create Article</button>
+        <div class="form-group">
+          <label for="title">Title:</label>
+          <input type="text" class="form-control" id="title" name="title" required>
+        </div>
+        <div class="form-group">
+          <label for="body">Body:</label>
+          <textarea class="form-control" id="body" name="body" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Create Article</button>
       </form>
     <% } else { %>
       <p>Please <a href="/login">login</a> to create articles.</p>
@@ -78,12 +106,14 @@
   </main>
   
   <footer>
-    <p>&copy; 2024 My Blog. All rights reserved.</p>
+    <div class="container">
+      <p>&copy; 2024 My Blog. All rights reserved.</p>
+    </div>
   </footer>
+
   <!-- Bootstrap JS and jQuery (required for Bootstrap) -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="header.js"></script>
 </body>
 </html>

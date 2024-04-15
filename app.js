@@ -16,6 +16,11 @@ app.use(session({
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use((req, res, next) => {
+  res.locals.loggedIn = req.session.user !== undefined && req.session.user !== null;
+  next();
+});
+
 
 // Set the views directory to the 'public' directory
 app.set('views', path.join(__dirname, 'public'));
@@ -34,6 +39,8 @@ const registerRouter = require('./routes/register');
 const dashboardRouter = require('./routes/dashboard');
 const createArticleRouter = require('./routes/createArticle');
 const logoutRouter = require('./routes/logout'); // Import logout route
+const Article = require('./models/article'); // Adjust the path as needed
+
 
 // Mount routes on their respective paths
 app.use('/', indexRouter);
@@ -43,6 +50,27 @@ app.use('/register', registerRouter);
 app.use('/dashboard', dashboardRouter);
 app.use('/article/create', createArticleRouter);
 app.use('/logout', logoutRouter); // Use logout route
+
+app.get('/articleDetail/:id', (req, res) => {
+  const articleId = req.params.id;
+  // Fetch the article details from the database
+  Article.findByPk(articleId)
+    .then(article => {
+      if (article) {
+        // Article found, render the detail page
+        res.render('articleDetail', { article });
+      } else {
+        // Article not found
+        console.error('Article not found:', articleId);
+        res.status(404).send('Article not found');
+      }
+    })
+    .catch(err => {
+      // Error fetching article
+      console.error('Error fetching article:', err);
+      res.status(500).send('Internal Server Error');
+    });
+});
 
 const sqlite3 = require('sqlite3').verbose();
 

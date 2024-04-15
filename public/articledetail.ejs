@@ -8,8 +8,6 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="styles.css">
-  <!-- Custom Font - Roboto -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     /* Custom modern styles */
     body {
@@ -17,9 +15,9 @@
       background-color: #f8f9fa;
       color: #333;
     }
-    header {
+    .navbar {
       background-color: #ec1d24;
-      padding: 15px 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
     .navbar-brand, .nav-link {
       color: #fff !important;
@@ -28,29 +26,11 @@
     .navbar-toggler-icon {
       background-color: #fff;
     }
-    .list-group-item {
-      background-color: #fff;
-      border: none;
+    .article-container {
+      border: 1px solid #ced4da;
       border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      margin-bottom: 15px;
       padding: 20px;
-    }
-    .list-group-item h3 {
-      color: #333;
-      margin-bottom: 10px;
-    }
-    .list-group-item p {
-      color: #666;
-      margin-bottom: 15px;
-    }
-    .read-more-link {
-      color: #ec1d24;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .read-more-link:hover {
-      text-decoration: underline;
+      margin-top: 20px;
     }
     footer {
       background-color: #333;
@@ -60,7 +40,6 @@
     }
   </style>
 </head>
-
 <body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark">
@@ -105,19 +84,22 @@
     </nav>
   </header>
 
+
   <main class="container mt-4">
-    <h2 class="mb-4">Latest Marvel Movies News</h2>
-    <% articles.forEach(article => { %>
-      <div class="list-group-item">
-        <h3 class="mb-3"><%= article.title %></h3>
-        <p><%= article.body.substring(0, 150) %>...</p>
-        <a href="/articleDetail/<%= article.id %>" class="read-more-link">Read More</a>
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <div class="article-container">
+          <h3><%= article.title %></h3>
+          <p><%= article.body %></p>
+        </div>
       </div>
-    <% }) %>    
+    </div>
   </main>
   
-  <footer>
-    <p>&copy; 2024 Superhero Movies Blog. All rights reserved.</p>
+  <footer class="mt-4">
+    <div class="container">
+      <p>&copy; 2024 Marvel Movies Blog. All rights reserved.</p>
+    </div>
   </footer>
 
   <!-- Bootstrap JS and jQuery (required for Bootstrap) -->
