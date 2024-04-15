@@ -1,16 +1,14 @@
-// sequelize.js or db.js
+const { Sequelize } = require('sequelize');
 
-const { Sequelize, QueryTypes } = require('sequelize');
-
+// Initialize Sequelize with SQLite database
 const sequelize = new Sequelize({
   dialect: 'sqlite',
   storage: 'db.sqlite', // Adjust this path to your SQLite database file
   logging: (msg) => {
-    if (msg.includes('Executing (default):')) {
-      // Do not log table creation messages
-      return;
+    // Log only non-table creation messages
+    if (!msg.includes('Executing (default): CREATE TABLE')) {
+      console.log(msg);
     }
-    console.log(msg);
   },
 });
 

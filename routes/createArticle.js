@@ -1,5 +1,3 @@
-// module.exports = router;
-
 const express = require('express');
 const router = express.Router();
 const Article = require('../models/article');
@@ -14,7 +12,7 @@ router.post('/', async (req, res) => {
     const newArticle = await Article.create({
       title,
       body,
-      author // Assign the username of the logged-in user as the author of the article
+      author
     });
 
     // Redirect the user to the article page after successful creation

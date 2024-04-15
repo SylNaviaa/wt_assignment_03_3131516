@@ -1,12 +1,5 @@
-// header.js
-
-// Function to check if the user is logged in
 function isLoggedIn() {
-    // You can use any method to determine if the user is logged in
-    // For example, you can check if a specific cookie or session variable exists
-    // Here, I'm assuming you have a global variable named 'user' that holds user information when logged in
     return user !== undefined && user !== null;
-    console.log(user);
 }
 
 // Function to update the header based on login status
